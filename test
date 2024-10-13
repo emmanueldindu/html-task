@@ -1,0 +1,107 @@
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    padding: 30px;
+    gap: 30px;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    scroll-behavior: smooth;
+    white-space: nowrap;
+}
+
+.scroll-item {
+    width: 484px;
+    height: 573px;
+    background-color: white;
+    border-radius: 21px;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    flex-shrink: 0; /* Prevent shrinking */
+    box-sizing: border-box;
+    position: relative; /* Set relative to position the pseudo-element */
+    overflow: hidden; /* Hide the pseudo-element when it's out of bounds */
+    transition: background-color 0.3s ease;
+
+}
+
+.scroll-item.lower {
+    margin-top: 150px; /* Lower placement for 2nd, 4th, and 6th items */
+}
+
+
+
+
+.scroll-item::before {
+    content: '';
+    position: absolute;
+    top: 100%; /* Start from the bottom */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #EBEBEB; /* The hover color */
+    z-index: 0; /* Ensure it appears behind the content */
+    transition: transform 0.4s ease-in-out; /* Smooth animation */
+    transform: translateY(100%); /* Start off screen (hidden) */
+}
+
+.scroll-item:hover::before {
+    transform: translateY(0); /* Slide in from the bottom on hover */
+}
+
+.scroll-item:hover {
+    color: black; /* Adjust text color on hover if needed */
+}
+
+.scroll-item:hover::before {
+    background-color: #EBEBEB;
+}
+
+.scroll-item::before {
+    border-radius: 21px; /* Match border-radius with the main container */
+}
+
+
+
+.cube {
+    width: 94px;
+    height: 94px;
+    border-radius: 100%;
+}
+
+.cube-text {
+    margin-top: 150px;   
+    width: 100%; /* Ensure the text takes full width of parent */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 1;
+}
+
+.cube-text h1 {
+    width: 342px; /* Ensure full width inside container */
+    height: 58px; /* Let the height adjust based on content */
+    font-size: 36px;
+    font-weight: 700;
+    font-family: "Quicksand", sans-serif;
+    word-wrap: break-word; /* Prevent text from overflowing */
+    overflow-wrap: break-word; /* Additional word-breaking */
+    white-space: normal; /* Ensure the text wraps to the next line */
+}
+
+.cube-text h2 {
+    width: 279px; /* Ensure full width inside container */
+    height: 95px; /* Let the height adjust based on content */
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 50px;
+    font-family: "Quicksand", sans-serif;
+    word-wrap: break-word; /* Prevent text from overflowing */
+    overflow-wrap: break-word; /* Additional word-breaking */
+    white-space: normal; /* Ensure the text wraps to the next line */
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, and Edge */
+}
